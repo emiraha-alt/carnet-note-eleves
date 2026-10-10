@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carnet de notes élèves</title>
+    <meta
+      name="description"
+      content="Carnet de notes élèves : suivre les résultats, les moyennes et les performances."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <h1>Carnet de notes élèves</h1>
+        <p>Suivi simple et rapide des résultats scolaires.</p>
+      </div>
+    </header>
+
+    <main class="container app-shell">
+      <section class="panel form-panel">
+        <h2>Ajouter une note</h2>
+        <form id="note-form">
+          <div class="field-grid">
+            <label>
+              <span>Élève</span>
+              <input type="text" id="student-name" name="studentName" placeholder="Nom de l'élève" required />
+            </label>
+
+            <label>
+              <span>Classe</span>
+              <input type="text" id="student-class" name="studentClass" placeholder="Ex. 3A" required />
+            </label>
+
+            <label>
+              <span>Matière</span>
+              <input type="text" id="subject" name="subject" placeholder="Ex. Mathématiques" required />
+            </label>
+
+            <label>
+              <span>Note</span>
+              <input type="number" id="score" name="score" min="0" max="20" step="0.1" placeholder="/20" required />
+            </label>
+
+            <label>
+              <span>Coefficient</span>
+              <input type="number" id="coefficient" name="coefficient" min="1" max="10" step="1" value="1" required />
+            </label>
+          </div>
+
+          <button type="submit" class="primary-btn">Ajouter la note</button>
+        </form>
+      </section>
+
+      <section class="summary-grid" aria-label="Statistiques">
+        <article class="panel stat-card accent-blue">
+          <span class="label">Élèves</span>
+          <strong id="student-count">0</strong>
+        </article>
+        <article class="panel stat-card accent-green">
+          <span class="label">Moyenne générale</span>
+          <strong id="overall-average">0.0</strong>
+        </article>
+        <article class="panel stat-card accent-orange">
+          <span class="label">Meilleure note</span>
+          <strong id="best-score">0.0</strong>
+        </article>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="panel-header">
+          <h2>Notes enregistrées</h2>
+          <button type="button" id="clear-all" class="secondary-btn">Tout effacer</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Élève</th>
+                <th>Classe</th>
+                <th>Matière</th>
+                <th>Note</th>
+                <th>Coeff.</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="notes-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <template id="empty-state-template">
+      <tr class="empty-row">
+        <td colspan="6">Aucune note enregistrée pour l’instant.</td>
+      </tr>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
